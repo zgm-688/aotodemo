@@ -15,4 +15,8 @@
             xx>=#{xxxxx}
     </select>
 
+    <insert id="addUser" parameterType="com.zgm.aotodemo.text.User">
+        insert into user (name,hairColor)values (#{name},#{hairColor})
+    </insert>
+
 </mapper>

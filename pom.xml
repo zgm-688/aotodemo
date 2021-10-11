@@ -41,6 +41,13 @@
             <version>4.6.7</version>
         </dependency>
 
+        <!-- 常用工具类 -->
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>4.6.7</version>
+        </dependency>
+
         <!-- 日志工具类 -->
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -87,6 +94,37 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.17</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.qiniu</groupId>
+            <artifactId>qiniu-java-sdk</artifactId>
+            <version>[7.7.0, 7.7.99]</version>
+        </dependency>
+
+        <!-- 实体自动构建工具，不用再手写 getter setter -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+        <!-- Spring Aop 所依赖的切面工具 -->
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>1.8.5</version>
+        </dependency>
+        <!-- 日志 -->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.ringcentral/ringcentral -->
+        <dependency>
+            <groupId>com.ringcentral</groupId>
+            <artifactId>ringcentral</artifactId>
+            <version>1.4.0</version>
+        </dependency>
+
     </dependencies>
 
     <build>

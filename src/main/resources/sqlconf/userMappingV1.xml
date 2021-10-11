@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zgm.aotodemo.test.dao.UserDao">
+
+    <insert id="addUser" parameterType="com.zgm.aotodemo.test.common.UserPojo">
+        insert into user
+        (uid_1,u_name,c_time)
+        values
+        (#{uid_1},#{u_name},#{c_time})
+    </insert>
+
+    <!--查询当前用户是否已经注册-->
+    <select id="getUserByUid_1" parameterType="com.zgm.aotodemo.test.common.UserPojo"
+            resultType="com.zgm.aotodemo.test.common.UserPojo">
+        SELECT
+            *
+        FROM
+            user
+        where
+           uid_1 = #{uid_1}
+    </select>
+
+    <!-- 更新 -->
+    <update id="upUser" parameterType="com.zgm.aotodemo.test.common.UserPojo">
+        <![CDATA[ UPDATE `user` ]]>
+        <set>
+            <if test="uid_1 != null and uid_1.toString() != ''">
+                <![CDATA[ `uid_1` = #{uid_1}, ]]>
+            </if>
+            <if test="u_name != null and u_name.toString() != ''">
+                <![CDATA[ `u_name` = #{u_name}, ]]>
+            </if>
+            <if test="c_time != null and c_time.toString() != ''">
+                <![CDATA[ `c_time` = #{c_time}, ]]>
+            </if>
+        </set>
+        where
+        `userId` = #{userId}
+    </update>
+
+    <delete id="delUserByUserId" parameterType="com.zgm.aotodemo.test.common.UserPojo">
+        delete from user
+        where
+         `userId` = #{userId}
+    </delete>
+
+    <!--查询文章-->
+    <select id="getArticle" parameterType="com.zgm.aotodemo.test.common.ArticlePojo"
+            resultType="com.zgm.aotodemo.test.common.ArticlePojo">
+        SELECT
+            articleId,picUrl,title,intro,type,c_time,bokeUrl,good,comments,views
+        FROM
+            article
+        order by articleId desc
+        limit #{startPage},10
+    </select>
+
+    <!--根据类型查询文章-->
+    <select id="getArticleByType" parameterType="com.zgm.aotodemo.test.common.ArticlePojo"
+            resultType="com.zgm.aotodemo.test.common.ArticlePojo">
+        SELECT
+            articleId,picUrl,title,intro,type,c_time,bokeUrl,good,comments,views
+        FROM
+            article
+        where
+            type = #{type}
+        order by articleId desc
+        limit #{startPage},10
+    </select>
+
+    <!--根据类型查询文章 根据推荐数来查询推荐的文章-->
+    <select id="getArticleByTypeOrderGoodCount" parameterType="com.zgm.aotodemo.test.common.ArticlePojo"
+            resultType="com.zgm.aotodemo.test.common.ArticlePojo">
+        SELECT
+            articleId,picUrl,title,intro,type,c_time,bokeUrl,good,comments,views
+        FROM
+            article
+        where
+            type = #{type}
+        order by goodCount desc
+        limit #{startPage},10
+    </select>
+
+
+    <!-- 更新文章 -->
+    <update id="upArticle" parameterType="com.zgm.aotodemo.test.common.ArticlePojo">
+        UPDATE article
+        set
+        goodCount = #{goodCount}
+        where
+        articleId = #{articleId}
+    </update>
+
+    <!--查询单篇文章-->
+    <select id="getOneArticle" parameterType="com.zgm.aotodemo.test.common.ArticlePojo"
+            resultType="com.zgm.aotodemo.test.common.ArticlePojo">
+        SELECT
+            articleId,picUrl,title,intro,type,content,c_time,bokeUrl,good,comments,views
+        FROM
+            article
+        where
+            articleId = #{articleId}
+    </select>
+
+
+</mapper>
