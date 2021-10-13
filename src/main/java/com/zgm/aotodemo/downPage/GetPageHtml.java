@@ -18,6 +18,8 @@ public class GetPageHtml {
         getHtml();
     }
 
+    //研发这个虽然穿在身 我的心依然是中国锌
+
     /**
      * 备注:
      * 当前网站:  https://www.exception.site/java8/java8-stream-tutorial
